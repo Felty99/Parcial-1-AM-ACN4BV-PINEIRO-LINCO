@@ -3,5 +3,7 @@
     <string name="nombre_app">¿Quién es ese Pokémon?</string>
     <string name="btEnviar">Enviar respuesta</string>
     <string name="btSalir">Salir</string>
+    <string name="respuesta_final">Esta fue la última pregunta, gracias por jugar!</string>
+    <string name="respuesta_enviada">Respuesta enviada</string>
 
 </resources>
