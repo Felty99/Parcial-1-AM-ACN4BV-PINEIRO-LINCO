@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imgPregunta;
     RadioGroup rgRespuestas;
     RadioButton rb1,rb2,rb3,rb4;
-    Button btEnviar;
+    Button btEnviar,btSalir;
 
     Integer correctas = 0;
     int index = 0;
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         rgRespuestas = findViewById(R.id.rgRespuestas);
 
         btEnviar = findViewById(R.id.btEnviar);
+        btSalir = findViewById(R.id.btSalir);
 
         rb1 = findViewById(R.id.rb1);
         rb2 = findViewById(R.id.rb2);
@@ -48,11 +49,17 @@ public class MainActivity extends AppCompatActivity {
         rb4 = findViewById(R.id.rb4);
 
         btEnviar.setEnabled(false);
+        btSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
         TextView respuestas = new TextView(this);
         LinearLayout Juego = findViewById(R.id.Juego);
         Juego.addView(respuestas);
-
         respuestas.setTextColor(R.color.teal_700);
         CompoundButton.OnCheckedChangeListener radioButtonsListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
