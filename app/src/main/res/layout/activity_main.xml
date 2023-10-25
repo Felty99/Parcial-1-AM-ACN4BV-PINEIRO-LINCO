@@ -5,7 +5,9 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#3779DD"
+    android:background="@drawable/fondo"
+    android:backgroundTint="#ABFFFFFF"
+    android:backgroundTintMode="screen"
     tools:context=".MainActivity">
 
 
@@ -22,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btMenu"
+            android:id="@+id/btSalir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -42,7 +44,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout7"
+        android:id="@+id/Juego"
         android:layout_width="380dp"
         android:layout_height="459dp"
         android:layout_marginStart="10dp"
@@ -85,25 +87,29 @@
                 android:id="@+id/rb1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="RadioButton"
+                android:textStyle="bold"/>
 
             <RadioButton
                 android:id="@+id/rb2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="RadioButton"
+                android:textStyle="bold"/>
 
             <RadioButton
                 android:id="@+id/rb3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="RadioButton"
+                android:textStyle="bold"/>
 
             <RadioButton
                 android:id="@+id/rb4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="RadioButton"
+                android:textStyle="bold"/>
         </RadioGroup>
 
     </LinearLayout>
@@ -117,7 +123,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintTop_toBottomOf="@+id/Juego"
+        app:layout_constraintVertical_bias="0.355"
+        android:backgroundTint="#82B1FF"
+        android:textColor="@color/pokemon_red"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
