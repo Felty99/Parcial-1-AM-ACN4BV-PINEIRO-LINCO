@@ -76,7 +76,7 @@
         <RadioGroup
             android:id="@+id/rgRespuestas"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,28 +88,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/rb2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/rb3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RadioButton
                 android:id="@+id/rb4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </RadioGroup>
 
     </LinearLayout>

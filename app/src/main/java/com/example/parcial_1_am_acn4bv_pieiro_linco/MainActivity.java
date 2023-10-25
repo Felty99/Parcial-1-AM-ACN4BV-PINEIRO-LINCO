@@ -2,14 +2,17 @@ package com.example.parcial_1_am_acn4bv_pieiro_linco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -24,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     Integer correctas = 0;
     int index = 0;
+    int rta =1;
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
         btEnviar.setEnabled(false);
 
+        TextView respuestas = new TextView(this);
+        LinearLayout Juego = findViewById(R.id.Juego);
+        Juego.addView(respuestas);
 
+        respuestas.setTextColor(R.color.teal_700);
         CompoundButton.OnCheckedChangeListener radioButtonsListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -71,16 +80,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar snackbar = Snackbar.make(view, R.string.respuesta_enviada, 1000); // Duración de 3000 milisegundos (3 segundos)
                 snackbar.show();
+                respuestas.setText("Has respondido "+rta+ " preguntas/s");
                 if (index ==0 &&  rb1.isChecked()){
+                    rta++;
                     correctas++;}
                 if (index == 1 && rb3.isChecked()){
-                    correctas++;}
+                    correctas++;
+                    rta++;}
                 if (index == 2 && rb4.isChecked()){
-                    correctas++;}
+                    correctas++;
+                    rta++;}
                 if (index == 3 && rb2.isChecked()){
-                    correctas++;}
+                    correctas++;
+                    rta++;}
                 if (index == 4 && rb4.isChecked()){
-                    correctas++;}
+                    correctas++;
+                    rta++;}
                 index++;
                 limpiarRb();
                 switch (index) {
