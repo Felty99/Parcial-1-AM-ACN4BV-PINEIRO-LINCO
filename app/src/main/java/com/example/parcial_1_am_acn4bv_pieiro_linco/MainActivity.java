@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar snackbar = Snackbar.make(view, R.string.respuesta_enviada, 1000); // Duración de 3000 milisegundos (3 segundos)
                 snackbar.show();
                 respuestas.setText("Has respondido "+rta+ " preguntas/s");
+
                 if (index ==0 &&  rb1.isChecked()){
                     rta++;
                     correctas++;}
