@@ -115,9 +115,12 @@ public class MainActivity extends AppCompatActivity {
                     case 5:
                         Toast.makeText(getApplicationContext(), R.string.respuesta_final, Toast.LENGTH_LONG).show();
                         String scorrectas = correctas.toString();
+                        new android.os.Handler().postDelayed(new Runnable() {
+                            public void run() {
+                                finish(); // Cierra la actividad actual
+                            }
+                        }, 3000);
 
-
-                        finish();
                         break;
 
                     default:
