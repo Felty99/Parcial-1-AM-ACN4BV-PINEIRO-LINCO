@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Parcial1AMACN4BVPIÑEIROLINCO"
         tools:targetApi="31">
         <activity
+            android:name=".AnswersActivty"
+            android:exported="false" />
+        <activity
             android:name=".RulesActivity"
             android:exported="false" />
         <activity

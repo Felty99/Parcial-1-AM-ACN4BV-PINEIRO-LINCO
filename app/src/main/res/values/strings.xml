@@ -7,6 +7,7 @@
     <string name="respuesta_enviada">Respuesta enviada</string>
     <string name="btContinuar">Continuar</string>
     <string name="hideNombre">Ingresá tu nombre</string>
+    <string name="Preguntas">Seleccione la pregunta para ver el resultado correcto</string>
     <string name="Reglas">Este juego consiste en adivinar qué Pokémon se esconde en la imágen.
     \nDeberás seleccionar la opción correcta y enviar la respuesta.
     \nAl final tendrás tu puntuación y las respuestas correctas.</string>
