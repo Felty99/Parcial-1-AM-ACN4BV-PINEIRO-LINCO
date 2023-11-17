@@ -5,5 +5,7 @@
     <string name="btSalir">Salir</string>
     <string name="respuesta_final">Esta fue la última pregunta, gracias por jugar!</string>
     <string name="respuesta_enviada">Respuesta enviada</string>
+    <string name="btContinuar">Continuar</string>
+    <string name="hideNombre">Ingresá tu nombre</string>
 
 </resources>
