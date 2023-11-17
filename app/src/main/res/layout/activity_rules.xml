@@ -7,8 +7,7 @@
     android:background="@drawable/fondo"
     android:backgroundTint="#ABFFFFFF"
     android:backgroundTintMode="screen"
-    tools:context=".WelcomeActivity">
-
+    tools:context=".RulesActivity">
     <LinearLayout
         android:id="@+id/Header"
         android:layout_width="0dp"
@@ -40,60 +39,28 @@
             android:textSize="20dp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvReglas"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:text="@string/Reglas"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498" />
 
     <Button
-        android:id="@+id/btContinuar"
+        android:id="@+id/btEmpezar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btContinuar"
-        android:visibility="invisible"
+        android:text="¡A Jugar!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre"
-        app:layout_constraintVertical_bias="0.227" />
-
-    <EditText
-        android:id="@+id/etNombre"
-        android:layout_width="307dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginEnd="52dp"
-        android:ems="10"
-        android:hint="@string/hideNombre"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.252"
-        app:srcCompat="@drawable/inicio" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075"
-        app:srcCompat="@drawable/img" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tvReglas"
+        app:layout_constraintVertical_bias="0.376" />
 </androidx.constraintlayout.widget.ConstraintLayout>
