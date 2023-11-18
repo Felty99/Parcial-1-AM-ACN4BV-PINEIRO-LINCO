@@ -15,32 +15,22 @@
             android:name=".FinalActivity"
             android:exported="false" />
         <activity
-            android:name=".FinishActivity"
-            android:exported="false"
-            android:label="@string/title_activity_finish"
-            android:theme="@style/Theme.Parcial1AMACN4BVPIÑEIROLINCO.NoActionBar" />
-        <activity
-            android:name=".ByeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_bye"
-            android:theme="@style/Theme.Parcial1AMACN4BVPIÑEIROLINCO.NoActionBar" />
-        <activity
             android:name=".AnswersActivty"
             android:exported="false" />
         <activity
             android:name=".RulesActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:name=".WelcomeActivity"
+            android:exported="false"/>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         <activity
             android:name=".GameActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

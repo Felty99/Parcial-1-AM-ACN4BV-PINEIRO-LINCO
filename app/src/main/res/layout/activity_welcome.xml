@@ -7,7 +7,7 @@
     android:background="@drawable/fondo"
     android:backgroundTint="#ABFFFFFF"
     android:backgroundTintMode="screen"
-    tools:context=".MainActivity">
+    tools:context=".WelcomeActivity">
 
     <LinearLayout
         android:id="@+id/Header"
