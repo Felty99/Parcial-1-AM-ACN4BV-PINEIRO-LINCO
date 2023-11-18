@@ -8,7 +8,7 @@
     android:background="@drawable/fondo"
     android:backgroundTint="#ABFFFFFF"
     android:backgroundTintMode="screen"
-    tools:context=".MainActivity">
+    tools:context=".GameActivity">
 
 
     <LinearLayout
