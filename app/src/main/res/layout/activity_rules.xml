@@ -38,7 +38,19 @@
             android:textColor="@color/pokemon_blue"
             android:textSize="20dp" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/tvBienvenido"
+        android:textColor="#5F9EA0"
+        android:layout_width="346dp"
+        android:layout_height="55dp"
+        android:text="Bienvenido + nombre"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
     <TextView
         android:id="@+id/tvReglas"
         android:layout_width="350dp"

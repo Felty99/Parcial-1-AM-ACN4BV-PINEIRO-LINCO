@@ -2,13 +2,48 @@ package com.example.parcial_1_am_acn4bv_pieiro_linco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class RulesActivity extends AppCompatActivity {
 
+    Button btEmpezar,btSalir;
+    TextView tvBienvenido,tvReglas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rules);
+
+        tvBienvenido = findViewById(R.id.tvBienvenido);
+
+        btSalir = findViewById(R.id.btSalir);
+
+        btEmpezar = findViewById(R.id.btEmpezar);
+        btSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+        Intent recibir = getIntent();
+        String nombre = recibir.getStringExtra("nombre");
+
+        tvBienvenido.setText("¡Bienvenido "+nombre+"!");
+
+
+
+        btEmpezar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent jugar = new Intent(RulesActivity.this, GameActivity.class);
+                startActivity(jugar);
+                finish();
+            }
+        });
     }
 }
