@@ -33,8 +33,16 @@ public class AnswersActivty extends AppCompatActivity {
         Intent continuar = getIntent();
         String respuestas_correctas = continuar.getStringExtra("cantidad_respuestas");
         ivRespuesta.setImageResource(R.drawable.inicio);
+        Integer rtas = Integer.parseInt(respuestas_correctas);
 
-        tvAcierto.setText("Acertaste "+respuestas_correctas+" pregunta/s.");
+        if (rtas == 0){
+            tvAcierto.setTextColor(getResources().getColor(R.color.pokemon_red));
+            tvAcierto.setText("No acertaste ninguna pregunta");
+        } else if (rtas == 1 ) {
+            tvAcierto.setText("Acertaste 1 pregunta");
+        } else if (rtas > 1) {
+            tvAcierto.setText("Acertaste "+respuestas_correctas+" pregunta/s.");}
+
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
         lvListaRespuestas.setAdapter(adapter);
