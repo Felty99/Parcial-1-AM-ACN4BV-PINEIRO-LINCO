@@ -3,6 +3,7 @@ package com.example.parcial_1_am_acn4bv_pieiro_linco;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -89,20 +90,15 @@ public class GameActivity extends AppCompatActivity {
                 respuestas.setText("Has respondido "+rta+ " preguntas/s");
 
                 if (index ==0 &&  rb1.isChecked()){
-                    rta++;
                     correctas++;}
                 if (index == 1 && rb3.isChecked()){
-                    correctas++;
-                    rta++;}
+                    correctas++;}
                 if (index == 2 && rb4.isChecked()){
-                    correctas++;
-                    rta++;}
+                    correctas++;}
                 if (index == 3 && rb2.isChecked()){
-                    correctas++;
-                    rta++;}
+                    correctas++;}
                 if (index == 4 && rb4.isChecked()){
-                    correctas++;
-                    rta++;}
+                    correctas++;}
                 index++;
                 limpiarRb();
                 switch (index) {
@@ -112,6 +108,7 @@ public class GameActivity extends AppCompatActivity {
                         rb2.setText("Bulbasaur");
                         rb3.setText("Ditto");
                         rb4.setText("Spearow");
+                        rta++;
                         break;
                     case 2:
                         imgPregunta.setImageResource(R.drawable.p2);
@@ -119,6 +116,7 @@ public class GameActivity extends AppCompatActivity {
                         rb2.setText("Rattata");
                         rb3.setText("Vulpix");
                         rb4.setText("Gengar");
+                        rta++;
                         break;
                     case 3:
                         imgPregunta.setImageResource(R.drawable.p3);
@@ -126,6 +124,7 @@ public class GameActivity extends AppCompatActivity {
                         rb2.setText("Charizard");
                         rb3.setText("Squirtle");
                         rb4.setText("Ninetails");
+                        rta++;
                         break;
                     case 4:
                         imgPregunta.setImageResource(R.drawable.p4);
@@ -133,20 +132,21 @@ public class GameActivity extends AppCompatActivity {
                         rb2.setText("Gloom");
                         rb3.setText("Diglett");
                         rb4.setText("Eevee");
+                        rta++;
                         break;
                     case 5:
+                        rta++;
                         Toast.makeText(getApplicationContext(), R.string.respuesta_final, Toast.LENGTH_LONG).show();
+                        Intent continuar = new Intent(GameActivity.this, AnswersActivty.class);
                         String scorrectas = correctas.toString();
-                        new android.os.Handler().postDelayed(new Runnable() {
-                            public void run() {
-                                finish(); // Cierra la actividad actual
-                            }
-                        }, 3000);
-
+                        continuar.putExtra("cantidad_respuestas",scorrectas);
+                        startActivity(continuar);
+                        finish();
                         break;
-
                     default:
-
+                        Intent volver = new Intent (GameActivity.this,GameActivity.class);
+                        startActivity(volver);
+                        finish();
                         finish();
                 }
 
