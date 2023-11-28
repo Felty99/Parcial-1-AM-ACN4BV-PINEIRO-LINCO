@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-
+            android:id="@+id/btSalir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-
+        android:id="@+id/btEnd"
         android:layout_width="170dp"
         android:layout_height="50dp"
         android:text="Salir"
