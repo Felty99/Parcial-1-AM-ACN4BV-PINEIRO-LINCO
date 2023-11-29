@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "224321016710",
+    "project_id": "tpfinal-52f32",
+    "storage_bucket": "tpfinal-52f32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:224321016710:android:181b35a2e6cb17ae8ad207",
+        "android_client_info": {
+          "package_name": "com.example.parcial_1_am_acn4bv_pieiro_linco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4BKyz1c2L45fnQ9MkC6eU9hWZzvGIUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
