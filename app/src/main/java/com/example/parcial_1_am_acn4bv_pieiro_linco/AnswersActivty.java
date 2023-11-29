@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 public class AnswersActivty extends AppCompatActivity {
     private ImageView ivRespuesta;
     private ListView lvListaRespuestas;
@@ -66,15 +68,20 @@ public class AnswersActivty extends AppCompatActivity {
                 String respuesta = (String) parent.getItemAtPosition(position);
                Toast.makeText(AnswersActivty.this,respuesta,Toast.LENGTH_SHORT).show();
                 if (respuesta == "Pregunta 1"){
-                    ivRespuesta.setImageResource(R.drawable.r0);
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r0.jpg?alt=media&token=457ca7a5-8ade-497a-9e69-0474541da28e").into(ivRespuesta);
+                    //ivRespuesta.setImageResource(R.drawable.r0);
                 } else if (respuesta == "Pregunta 2") {
-                    ivRespuesta.setImageResource(R.drawable.r1);
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r1.jpg?alt=media&token=f4899876-6fd4-4317-8d01-a12fd125025b").into(ivRespuesta);
+                    //ivRespuesta.setImageResource(R.drawable.r1);
                 }else if (respuesta == "Pregunta 3") {
-                    ivRespuesta.setImageResource(R.drawable.r2);
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r2.jpg?alt=media&token=dcc1f30b-9397-4afe-a975-521a9b4a6393").into(ivRespuesta);
+//ivRespuesta.setImageResource(R.drawable.r2);
                 }else if (respuesta == "Pregunta 4") {
-                    ivRespuesta.setImageResource(R.drawable.r3);
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r3.png?alt=media&token=b68d4ab9-7e4e-4d43-8dd6-329611b71acf").into(ivRespuesta);
+                    //ivRespuesta.setImageResource(R.drawable.r3);
                 }else if (respuesta == "Pregunta 5") {
-                    ivRespuesta.setImageResource(R.drawable.r4);
+                    Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r4.png?alt=media&token=2e76a730-7504-4074-b82c-853a830967ad").into(ivRespuesta);
+//ivRespuesta.setImageResource(R.drawable.r4);
                 }
             }
         });
