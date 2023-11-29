@@ -37,6 +37,7 @@
             android:textAlignment="center"
             android:textColor="@color/pokemon_blue"
             android:textSize="20dp" />
+
     </LinearLayout>
     <TextView
         android:id="@+id/tvBienvenido"

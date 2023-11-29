@@ -8,13 +8,19 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
     TextView tvTitulo;
     EditText etNombre;
     Button btContinuar,btSalir;
+
+    Switch swMusic;
+    MusicPlayer musicPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +30,21 @@ public class WelcomeActivity extends AppCompatActivity {
         etNombre=findViewById(R.id.etNombre);
         btContinuar=findViewById(R.id.btContinuar);
         btSalir = findViewById(R.id.btSalir);
+        swMusic = findViewById(R.id.swMusic);
+        musicPlayer = musicPlayer.getInstance();
+        musicPlayer.initialize(this, R.raw.pkm);
+
+        swMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    musicPlayer.start();
+                } else {
+                    musicPlayer.pause();
+                }
+            }
+        });
+
         btSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,5 +85,12 @@ public class WelcomeActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        musicPlayer.release();
     }
 }

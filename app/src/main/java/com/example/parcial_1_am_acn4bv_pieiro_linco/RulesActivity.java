@@ -6,12 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class RulesActivity extends AppCompatActivity {
 
     Button btEmpezar,btSalir;
     TextView tvBienvenido,tvReglas;
+    Switch swMusic;
+    MusicPlayer musicPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +26,11 @@ public class RulesActivity extends AppCompatActivity {
         btSalir = findViewById(R.id.btSalir);
 
         btEmpezar = findViewById(R.id.btEmpezar);
+
+        musicPlayer = musicPlayer.getInstance();
+        musicPlayer.initialize(this, R.raw.pkm);
+
+
         btSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
