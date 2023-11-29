@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 public class GameActivity extends AppCompatActivity {
   //Casteo de elementos.
@@ -36,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
 
         imgPregunta = findViewById(R.id.imgPregunta);
 
-        imgPregunta.setImageResource(R.drawable.p0);
+        //imgPregunta.setImageResource(R.drawable.p0);
 
         rgRespuestas = findViewById(R.id.rgRespuestas);
 
@@ -81,6 +82,8 @@ public class GameActivity extends AppCompatActivity {
         rb3.setText("Jigglypuf");
         rb4.setText("Snorlax");
 
+        Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/p0.jpg?alt=media&token=fa1dff50-fbcb-45e9-8ab0-52aab708f6bf").into(imgPregunta);
+
 
         btEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +106,8 @@ public class GameActivity extends AppCompatActivity {
                 limpiarRb();
                 switch (index) {
                     case 1:
-                        imgPregunta.setImageResource(R.drawable.p1);
+                        Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/p1.jpg?alt=media&token=7e5ae2f7-ae84-43ae-8a6a-4920d1c3f9ef").into(imgPregunta);
+                        //imgPregunta.setImageResource(R.drawable.p1);
                         rb1.setText("Charmander");
                         rb2.setText("Bulbasaur");
                         rb3.setText("Ditto");
@@ -111,7 +115,9 @@ public class GameActivity extends AppCompatActivity {
                         rta++;
                         break;
                     case 2:
-                        imgPregunta.setImageResource(R.drawable.p2);
+
+                        Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/p2.jpg?alt=media&token=e4a3a87d-cd09-477b-86ae-cc8bd5469fde").into(imgPregunta);
+                        //imgPregunta.setImageResource(R.drawable.p2);
                         rb1.setText("Metapod");
                         rb2.setText("Rattata");
                         rb3.setText("Vulpix");
@@ -119,7 +125,8 @@ public class GameActivity extends AppCompatActivity {
                         rta++;
                         break;
                     case 3:
-                        imgPregunta.setImageResource(R.drawable.p3);
+                        Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/p3.png?alt=media&token=91e0ca54-e476-4ab5-9a43-a4d98d9f4662").into(imgPregunta);
+                        // imgPregunta.setImageResource(R.drawable.p3);
                         rb1.setText("Blastoise");
                         rb2.setText("Charizard");
                         rb3.setText("Squirtle");
@@ -127,7 +134,8 @@ public class GameActivity extends AppCompatActivity {
                         rta++;
                         break;
                     case 4:
-                        imgPregunta.setImageResource(R.drawable.p4);
+                        Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/p4.png?alt=media&token=d900155a-0f8e-4745-a38a-8e4f397e0787").into(imgPregunta);
+                        //imgPregunta.setImageResource(R.drawable.p4);
                         rb1.setText("Machop");
                         rb2.setText("Gloom");
                         rb3.setText("Diglett");
