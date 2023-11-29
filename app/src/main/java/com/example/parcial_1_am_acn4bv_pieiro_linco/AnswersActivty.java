@@ -17,9 +17,9 @@ public class AnswersActivty extends AppCompatActivity {
     private ImageView ivRespuesta;
     private ListView lvListaRespuestas;
     private ArrayAdapter<String> adapter;
-    private TextView tvAcierto;
-    Button btFinal;
-    private String[] data = {"Pregunta 1","Pregunta 2","Pregunta 3","Pregunta 4","Pregunta 5"};
+    private TextView tvAcierto,tvPokedex;
+    Button btFinal;    private String[] data = {"Pregunta 1","Pregunta 2","Pregunta 3","Pregunta 4","Pregunta 5"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class AnswersActivty extends AppCompatActivity {
         lvListaRespuestas = findViewById(R.id.lvListaRespuestas);
         btFinal = findViewById(R.id.btFinal);
         tvAcierto = findViewById(R.id.tvAcierto);
+        tvPokedex = findViewById(R.id.tvPokedex);
+
 
         Intent continuar = getIntent();
         String respuestas_correctas = continuar.getStringExtra("cantidad_respuestas");
@@ -78,4 +80,5 @@ public class AnswersActivty extends AppCompatActivity {
         });
 
     }
+
 }
