@@ -106,7 +106,7 @@ public class AnswersActivty extends AppCompatActivity {
             public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
                 Pokemon foundPokemon = response.body();
                 if (foundPokemon != null) {
-                    String responseString = "ID Pokedex" + foundPokemon.getId() + "- Nombre: " + foundPokemon.getName() + "- Altura: " + foundPokemon.getHeight() + "- Tipo: " + foundPokemon.getTypes().get(0).getType().getName() + " - Peso: " + foundPokemon.getWeight();
+                    String responseString = "Nª Pokedex " + foundPokemon.getId() + "\nNombre: " + foundPokemon.getName() + "\nAltura: " + foundPokemon.getHeight()+" ft" + "\nTipo: " + foundPokemon.getTypes().get(0).getType().getName() + "\nPeso: " + foundPokemon.getWeight();
 
                     tvPokedex.setText(responseString);
 
