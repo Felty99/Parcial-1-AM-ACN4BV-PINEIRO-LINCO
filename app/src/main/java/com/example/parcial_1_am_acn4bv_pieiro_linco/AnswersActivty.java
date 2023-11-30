@@ -13,13 +13,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.parcial_1_am_acn4bv_pieiro_linco.model.Pokemon;
+import com.example.parcial_1_am_acn4bv_pieiro_linco.service.PokemonService;
 import com.squareup.picasso.Picasso;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AnswersActivty extends AppCompatActivity {
     private ImageView ivRespuesta;
     private ListView lvListaRespuestas;
     private ArrayAdapter<String> adapter;
     private TextView tvAcierto,tvPokedex;
+
+    PokemonService pokemonService;
     Button btFinal;    private String[] data = {"Pregunta 1","Pregunta 2","Pregunta 3","Pregunta 4","Pregunta 5"};
 
 
@@ -32,7 +42,8 @@ public class AnswersActivty extends AppCompatActivity {
         btFinal = findViewById(R.id.btFinal);
         tvAcierto = findViewById(R.id.tvAcierto);
         tvPokedex = findViewById(R.id.tvPokedex);
-
+        Retrofit retrofitInstance = new Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/pokemon/").addConverterFactory(GsonConverterFactory.create()).build();
+        pokemonService = retrofitInstance.create(PokemonService.class);
 
         Intent continuar = getIntent();
         String respuestas_correctas = continuar.getStringExtra("cantidad_respuestas");
@@ -57,7 +68,6 @@ public class AnswersActivty extends AppCompatActivity {
                 Intent seguir = new Intent(AnswersActivty.this, FinalActivity.class);
                 startActivity(seguir);
                 finish();
-
             }
         });
 
@@ -66,26 +76,45 @@ public class AnswersActivty extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String respuesta = (String) parent.getItemAtPosition(position);
-               Toast.makeText(AnswersActivty.this,respuesta,Toast.LENGTH_SHORT).show();
+                Toast.makeText(AnswersActivty.this,respuesta,Toast.LENGTH_SHORT).show();
                 if (respuesta == "Pregunta 1"){
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r0.jpg?alt=media&token=457ca7a5-8ade-497a-9e69-0474541da28e").into(ivRespuesta);
-                    //ivRespuesta.setImageResource(R.drawable.r0);
+                    getPokemonByDexNum(pokemonService,"pikachu");
                 } else if (respuesta == "Pregunta 2") {
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r1.jpg?alt=media&token=f4899876-6fd4-4317-8d01-a12fd125025b").into(ivRespuesta);
-                    //ivRespuesta.setImageResource(R.drawable.r1);
+                    getPokemonByDexNum(pokemonService,"ditto");
                 }else if (respuesta == "Pregunta 3") {
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r2.jpg?alt=media&token=dcc1f30b-9397-4afe-a975-521a9b4a6393").into(ivRespuesta);
-//ivRespuesta.setImageResource(R.drawable.r2);
+                    getPokemonByDexNum(pokemonService,"gengar");
                 }else if (respuesta == "Pregunta 4") {
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r3.png?alt=media&token=b68d4ab9-7e4e-4d43-8dd6-329611b71acf").into(ivRespuesta);
-                    //ivRespuesta.setImageResource(R.drawable.r3);
+                    getPokemonByDexNum(pokemonService,"charizard");
                 }else if (respuesta == "Pregunta 5") {
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r4.png?alt=media&token=2e76a730-7504-4074-b82c-853a830967ad").into(ivRespuesta);
-//ivRespuesta.setImageResource(R.drawable.r4);
+                    getPokemonByDexNum(pokemonService,"eevee");
                 }
             }
         });
 
     }
+    private void getPokemonByDexNum(PokemonService pokemonService, String dexNum) {
+        Call<Pokemon> pokemonCall = pokemonService.getPokemonByDexNumOrName(dexNum);
+        pokemonCall.enqueue(new Callback<Pokemon>() {
+            @Override
+            public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
+                Pokemon foundPokemon = response.body();
+                if (foundPokemon != null) {
+                    String responseString = "ID Pokedex" + foundPokemon.getId() + "- Nombre: " + foundPokemon.getName() + "- Altura: " + foundPokemon.getHeight() + "- Tipo: " + foundPokemon.getTypes().get(0).getType().getName() + " - Peso: " + foundPokemon.getWeight();
 
+                    tvPokedex.setText(responseString);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Pokemon> call, Throwable t) {
+
+            }
+        });
+    }
 }
