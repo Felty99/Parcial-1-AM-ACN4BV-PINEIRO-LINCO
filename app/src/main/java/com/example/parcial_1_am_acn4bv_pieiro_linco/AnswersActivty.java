@@ -30,7 +30,8 @@ public class AnswersActivty extends AppCompatActivity {
     private TextView tvAcierto,tvPokedex;
 
     PokemonService pokemonService;
-    Button btFinal;    private String[] data = {"Pregunta 1","Pregunta 2","Pregunta 3","Pregunta 4","Pregunta 5"};
+    Button btFinal, button;
+    private String[] data = {"Pregunta 1","Pregunta 2","Pregunta 3","Pregunta 4","Pregunta 5"};
 
 
     @Override
@@ -68,6 +69,7 @@ public class AnswersActivty extends AppCompatActivity {
                 Intent seguir = new Intent(AnswersActivty.this, FinalActivity.class);
                 startActivity(seguir);
                 finish();
+
             }
         });
 

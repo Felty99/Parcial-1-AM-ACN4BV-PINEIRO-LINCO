@@ -155,7 +155,6 @@ public class GameActivity extends AppCompatActivity {
                         Intent volver = new Intent (GameActivity.this,GameActivity.class);
                         startActivity(volver);
                         finish();
-                        finish();
                 }
 
             }

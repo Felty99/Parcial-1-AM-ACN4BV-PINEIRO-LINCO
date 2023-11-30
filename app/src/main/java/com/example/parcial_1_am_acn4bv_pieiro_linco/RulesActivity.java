@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class RulesActivity extends AppCompatActivity {
 
-    Button btEmpezar,btSalir;
+    Button btEmpezar,btSalir,btVolver;
     TextView tvBienvenido,tvReglas;
     Switch swMusic;
     MusicPlayer musicPlayer;
@@ -26,6 +26,7 @@ public class RulesActivity extends AppCompatActivity {
         btSalir = findViewById(R.id.btSalir);
 
         btEmpezar = findViewById(R.id.btEmpezar);
+        btVolver = findViewById(R.id.btVolver);
 
         musicPlayer = musicPlayer.getInstance();
         musicPlayer.initialize(this, R.raw.pkm);
@@ -43,6 +44,15 @@ public class RulesActivity extends AppCompatActivity {
         String nombre = recibir.getStringExtra("nombre");
 
         tvBienvenido.setText("¡Bienvenido "+nombre+"!");
+
+        btVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent volver = new Intent(RulesActivity.this, WelcomeActivity.class);
+                startActivity(volver);
+                finish();
+            }
+        });
 
 
 

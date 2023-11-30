@@ -20,6 +20,7 @@ public class FinalActivity extends AppCompatActivity {
         tvGracias=findViewById(R.id.tvGracias);
         btInicio=findViewById(R.id.btInicio);
         btSalir=findViewById(R.id.btSalir);
+        btEnd = findViewById(R.id.btEnd);
 
         btInicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,12 +39,13 @@ public class FinalActivity extends AppCompatActivity {
             }
 
         });
+
         btEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
-
         });
+
     }
 }
