@@ -59,7 +59,9 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNombre"
-        app:layout_constraintVertical_bias="0.227" />
+        app:layout_constraintVertical_bias="0.227"
+        android:backgroundTint="#82B1FF"
+        android:textColor="@color/pokemon_red"/>
 
     <EditText
         android:id="@+id/etNombre"
