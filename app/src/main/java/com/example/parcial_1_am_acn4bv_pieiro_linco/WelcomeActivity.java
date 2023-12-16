@@ -117,7 +117,7 @@ public class WelcomeActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Log.i("Firebase","Log hay usuario");
+            btLogout.setVisibility(View.VISIBLE);
         } else {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
