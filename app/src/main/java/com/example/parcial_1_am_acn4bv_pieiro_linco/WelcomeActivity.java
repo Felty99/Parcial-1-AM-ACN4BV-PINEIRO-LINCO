@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class WelcomeActivity extends AppCompatActivity {
     TextView tvTitulo;
     EditText etNombre;
-    Button btContinuar,btSalir;
+    Button btContinuar,btSalir,btLogout;
 
     Switch swMusic;
     MusicPlayer musicPlayer;
@@ -37,6 +37,7 @@ public class WelcomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         etNombre=findViewById(R.id.etNombre);
         btContinuar=findViewById(R.id.btContinuar);
+        btLogout=findViewById(R.id.btLogout);
         btSalir = findViewById(R.id.btSalir);
         swMusic = findViewById(R.id.swMusic);
         musicPlayer = musicPlayer.getInstance();
@@ -57,6 +58,13 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+
+        });
+
+        btLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 logout();
             }
 
@@ -109,7 +117,7 @@ public class WelcomeActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Log.i("Firebase","Log hay usuuario");
+            Log.i("Firebase","Log hay usuario");
         } else {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
