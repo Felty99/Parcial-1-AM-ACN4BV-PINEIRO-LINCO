@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText etEmail, etPwd;
-    Button btRegistro;
+    Button btRegister;
 
     private FirebaseAuth mAuth;
     public void register (String email, String password) {
@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        btRegistro=findViewById(R.id.btRegistro);
+        btRegister=findViewById(R.id.btRegister);
 
         mAuth = FirebaseAuth.getInstance();
 
