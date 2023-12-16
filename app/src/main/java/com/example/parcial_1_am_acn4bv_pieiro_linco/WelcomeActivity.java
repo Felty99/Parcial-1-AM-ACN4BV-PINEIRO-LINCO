@@ -6,12 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.google.firebase.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class WelcomeActivity extends AppCompatActivity {
     TextView tvTitulo;
@@ -21,12 +26,15 @@ public class WelcomeActivity extends AppCompatActivity {
     Switch swMusic;
     MusicPlayer musicPlayer;
 
+    FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        mAuth = FirebaseAuth.getInstance();
         etNombre=findViewById(R.id.etNombre);
         btContinuar=findViewById(R.id.btContinuar);
         btSalir = findViewById(R.id.btSalir);
@@ -93,4 +101,18 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onDestroy();
         musicPlayer.release();
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Log.i("Firebase","Log hay suuario");
+        } else {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            Log.i("Firebase","No hay usuario");
+        }
+    }
 }
+
