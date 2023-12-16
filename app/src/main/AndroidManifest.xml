@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Parcial1AMACN4BVPIÑEIROLINCO"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
@@ -37,7 +40,7 @@
         </activity>
         <activity
             android:name=".GameActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

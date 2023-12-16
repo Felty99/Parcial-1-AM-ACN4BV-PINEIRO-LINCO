@@ -15,18 +15,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
+
     EditText etEmail, etPwd;
-    Button btLogin,btRegistrate;
+    Button btRegistro;
 
     private FirebaseAuth mAuth;
     public void login (String email, String password) {
         Log.i("firebase", "mail: " + email);
         Log.i("firebase", "password: " + password);
 
-        mAuth.signInWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
 
                         } else {
-                            Toast.makeText(LoginActivity.this, "Fallo en la autenticación",
+                            Toast.makeText(RegisterActivity.this, "Fallo en la autenticación",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void onLoginButtonClick (View view){
+    public void onRegisterButtonClick (View view){
         EditText emailInput = findViewById(R.id.etEmail);
         EditText passInput = findViewById(R.id.etPwd);
 
@@ -59,23 +59,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_register);
 
-        btLogin=findViewById(R.id.btLogin);
-
-        btRegistrate=findViewById(R.id.btRegistrate);
-
-        btRegistrate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+        btRegistro=findViewById(R.id.btRegistro);
 
         mAuth = FirebaseAuth.getInstance();
 
 
 
-    }
-}
+    }}
