@@ -57,7 +57,9 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+                logout();
             }
+
         });
 
         etNombre.addTextChangedListener(new TextWatcher() {
@@ -107,12 +109,17 @@ public class WelcomeActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Log.i("Firebase","Log hay suuario");
+            Log.i("Firebase","Log hay usuuario");
         } else {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             Log.i("Firebase","No hay usuario");
         }
+    }
+    public void logout (){
+        mAuth.signOut();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
     }
 }
 
