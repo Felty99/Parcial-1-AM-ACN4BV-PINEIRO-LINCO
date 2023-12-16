@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button btRegistro;
 
     private FirebaseAuth mAuth;
-    public void login (String email, String password) {
+    public void register (String email, String password) {
         Log.i("firebase", "mail: " + email);
         Log.i("firebase", "password: " + password);
 
@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = emailInput.getText().toString();
         String password = passInput.getText().toString();
 
-        this.login(email,password);
+        this.register(email,password);
     }
 
 
