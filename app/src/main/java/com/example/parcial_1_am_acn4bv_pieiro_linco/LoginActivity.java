@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     EditText etEmail, etPwd;
-    Button btLogin,btRegistrate;
+    Button btLogin,btRegistrate,btSalir;
 
     private FirebaseAuth mAuth;
     public void login (String email, String password) {
@@ -62,8 +62,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         btLogin=findViewById(R.id.btLogin);
-
+        btSalir = findViewById(R.id.btSalir);
         btRegistrate=findViewById(R.id.btRegistrate);
+        btSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishAffinity();
+            }
+
+        });
 
         btRegistrate.setOnClickListener(new View.OnClickListener() {
             @Override

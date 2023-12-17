@@ -67,7 +67,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                finishAffinity();
             }
 
         });
@@ -84,7 +84,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = tvNombre.getText().toString();
+                String nombre = user.getApodo();
 
                 Intent continuar = new Intent(WelcomeActivity.this, RulesActivity.class);
 
