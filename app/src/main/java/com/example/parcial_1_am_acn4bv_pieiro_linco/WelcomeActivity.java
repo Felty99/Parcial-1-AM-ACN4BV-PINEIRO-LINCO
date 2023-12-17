@@ -36,6 +36,8 @@ public class WelcomeActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
 
+    User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,14 +132,17 @@ public class WelcomeActivity extends AppCompatActivity {
             btLogout.setVisibility(View.VISIBLE);
             String uid= currentUser.getUid();
             db.collection("usuarios")
+                    .whereEqualTo("uid", uid)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if(task.isSuccessful()){
-                                for (QueryDocumentSnapshot documento: task.getResult()){
+                                for (QueryDocumentSnapshot documento: task.getResult()) {
                                     String id = documento.getId();
                                     Object data = documento.getData();
+                                    user = documento.toObject(User.class);
+                                    user.getApodo();
                                     Log.i("FirebaseFirestore", "id: "+id+"data: "+data.toString());
                                 }
                             }
