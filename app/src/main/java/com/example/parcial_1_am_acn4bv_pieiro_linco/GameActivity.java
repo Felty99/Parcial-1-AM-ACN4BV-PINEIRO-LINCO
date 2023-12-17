@@ -1,10 +1,14 @@
 package com.example.parcial_1_am_acn4bv_pieiro_linco;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -15,8 +19,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameActivity extends AppCompatActivity {
   //Casteo de elementos.
@@ -26,6 +41,7 @@ public class GameActivity extends AppCompatActivity {
     RadioButton rb1,rb2,rb3,rb4;
     Button btEnviar,btSalir;
 
+    FirebaseFirestore db;
     Integer correctas = 0;
     int index = 0;
     int rta =1;
@@ -36,9 +52,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imgPregunta = findViewById(R.id.imgPregunta);
-
-        //imgPregunta.setImageResource(R.drawable.p0);
-
+        db = FirebaseFirestore.getInstance();
         rgRespuestas = findViewById(R.id.rgRespuestas);
 
         btEnviar = findViewById(R.id.btEnviar);
@@ -86,6 +100,7 @@ public class GameActivity extends AppCompatActivity {
 
 
         btEnviar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 Snackbar snackbar = Snackbar.make(view, R.string.respuesta_enviada, 1000); // Duración de 3000 milisegundos (3 segundos)
@@ -147,6 +162,25 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), R.string.respuesta_final, Toast.LENGTH_LONG).show();
                         Intent continuar = new Intent(GameActivity.this, AnswersActivty.class);
                         String scorrectas = correctas.toString();
+
+                        Map<String, Object> docData = new HashMap<>();
+                        docData.put("apodo", "Hello world!");
+                        docData.put("correctas", rta);
+                        docData.put("fecha", new Timestamp(new Date()));
+                        db.collection("partidas").add(docData)
+                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w(TAG, "Error adding document", e);
+                                    }
+                                });
+
                         continuar.putExtra("cantidad_respuestas",scorrectas);
                         startActivity(continuar);
                         finish();
@@ -159,6 +193,8 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
 
@@ -170,4 +206,6 @@ public class GameActivity extends AppCompatActivity {
         rb3.setChecked(false);
         rb4.setChecked(false);
     }
+
+
 }
