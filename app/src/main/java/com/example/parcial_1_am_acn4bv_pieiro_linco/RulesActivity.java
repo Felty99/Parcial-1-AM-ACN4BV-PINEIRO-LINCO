@@ -43,7 +43,7 @@ public class RulesActivity extends AppCompatActivity {
         Intent recibir = getIntent();
         String nombre = recibir.getStringExtra("nombre");
 
-        tvBienvenido.setText("¡Bienvenido "+nombre+"!");
+        tvBienvenido.setText("Estimado "+nombre+ ":");
 
         btVolver.setOnClickListener(new View.OnClickListener() {
             @Override
