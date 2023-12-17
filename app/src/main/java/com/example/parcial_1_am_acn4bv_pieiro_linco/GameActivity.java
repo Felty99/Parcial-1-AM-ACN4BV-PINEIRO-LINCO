@@ -29,6 +29,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -174,11 +175,13 @@ public class GameActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), R.string.respuesta_final, Toast.LENGTH_LONG).show();
                         Intent continuar = new Intent(GameActivity.this, AnswersActivty.class);
                         String scorrectas = correctas.toString();
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+                        String fechaComoCadena = sdf.format(new Date());
 
                         Map<String, Object> docData = new HashMap<>();
                         docData.put("apodo", nombre);
                         docData.put("correctas", correctas);
-                        docData.put("fecha", new Timestamp(new Date()));
+                        docData.put("fecha", fechaComoCadena);
                         db.collection("partidas").add(docData)
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
