@@ -1,5 +1,6 @@
 package com.example.parcial_1_am_acn4bv_pieiro_linco;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,9 +15,15 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class WelcomeActivity extends AppCompatActivity {
     TextView tvTitulo;
@@ -27,6 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
     MusicPlayer musicPlayer;
 
     FirebaseAuth mAuth;
+    FirebaseFirestore db;
 
 
     @Override
@@ -34,6 +42,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         etNombre=findViewById(R.id.etNombre);
         btContinuar=findViewById(R.id.btContinuar);
@@ -42,6 +51,7 @@ public class WelcomeActivity extends AppCompatActivity {
         swMusic = findViewById(R.id.swMusic);
         musicPlayer = musicPlayer.getInstance();
         musicPlayer.initialize(this, R.raw.pkm);
+
 
         swMusic.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -118,6 +128,21 @@ public class WelcomeActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             btLogout.setVisibility(View.VISIBLE);
+            String uid= currentUser.getUid();
+            db.collection("usuarios")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                for (QueryDocumentSnapshot documento: task.getResult()){
+                                    String id = documento.getId();
+                                    Object data = documento.getData();
+                                    Log.i("FirebaseFirestore", "id: "+id+"data: "+data.toString());
+                                }
+                            }
+                        }
+                    });
         } else {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);

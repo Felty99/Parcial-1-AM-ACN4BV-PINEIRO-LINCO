@@ -23,8 +23,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     public void register (String email, String password) {
-        Log.i("firebase", "mail: " + email);
-        Log.i("firebase", "password: " + password);
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
