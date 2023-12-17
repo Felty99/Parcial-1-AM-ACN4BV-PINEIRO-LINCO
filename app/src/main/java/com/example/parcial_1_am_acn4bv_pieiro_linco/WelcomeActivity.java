@@ -15,10 +15,9 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.parcial_1_am_acn4bv_pieiro_linco.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Firebase;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,8 +25,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class WelcomeActivity extends AppCompatActivity {
-    TextView tvTitulo;
-    EditText etNombre;
+    TextView tvTitulo,tvNombre;
     Button btContinuar,btSalir,btLogout;
 
     Switch swMusic;
@@ -46,7 +44,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        etNombre=findViewById(R.id.etNombre);
+        tvNombre=findViewById(R.id.tvNombre);
         btContinuar=findViewById(R.id.btContinuar);
         btLogout=findViewById(R.id.btLogout);
         btSalir = findViewById(R.id.btSalir);
@@ -82,29 +80,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
         });
 
-        etNombre.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
-                    btContinuar.setVisibility(View.VISIBLE);
-                } else {
-                    btContinuar.setVisibility(View.INVISIBLE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
 
         btContinuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = etNombre.getText().toString();
+                String nombre = tvNombre.getText().toString();
 
                 Intent continuar = new Intent(WelcomeActivity.this, RulesActivity.class);
 
@@ -142,7 +122,8 @@ public class WelcomeActivity extends AppCompatActivity {
                                     String id = documento.getId();
                                     Object data = documento.getData();
                                     user = documento.toObject(User.class);
-                                    user.getApodo();
+                                    String apodo = user.getApodo();
+                                    tvNombre.setText("¡Bienvenido "+apodo+"!");
                                     Log.i("FirebaseFirestore", "id: "+id+"data: "+data.toString());
                                 }
                             }

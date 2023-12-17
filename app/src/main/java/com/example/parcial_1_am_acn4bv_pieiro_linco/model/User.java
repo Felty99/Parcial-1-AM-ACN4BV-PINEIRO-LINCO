@@ -1,4 +1,4 @@
-package com.example.parcial_1_am_acn4bv_pieiro_linco;
+package com.example.parcial_1_am_acn4bv_pieiro_linco.model;
 
 public class User {
 
