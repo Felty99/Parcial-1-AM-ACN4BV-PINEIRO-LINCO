@@ -60,6 +60,7 @@ public class RulesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent jugar = new Intent(RulesActivity.this, GameActivity.class);
+                jugar.putExtra("nombre",nombre);
                 startActivity(jugar);
                 finish();
             }

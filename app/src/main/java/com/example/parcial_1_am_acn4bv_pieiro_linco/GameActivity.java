@@ -19,12 +19,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.parcial_1_am_acn4bv_pieiro_linco.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -41,7 +48,10 @@ public class GameActivity extends AppCompatActivity {
     RadioButton rb1,rb2,rb3,rb4;
     Button btEnviar,btSalir;
 
+    FirebaseAuth mAuth;
     FirebaseFirestore db;
+
+    User user;
     Integer correctas = 0;
     int index = 0;
     int rta =1;
@@ -50,9 +60,11 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Intent jugar = getIntent();
+        String nombre = jugar.getStringExtra("nombre");
         imgPregunta = findViewById(R.id.imgPregunta);
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         rgRespuestas = findViewById(R.id.rgRespuestas);
 
         btEnviar = findViewById(R.id.btEnviar);
@@ -164,8 +176,8 @@ public class GameActivity extends AppCompatActivity {
                         String scorrectas = correctas.toString();
 
                         Map<String, Object> docData = new HashMap<>();
-                        docData.put("apodo", "Hello world!");
-                        docData.put("correctas", rta);
+                        docData.put("apodo", nombre);
+                        docData.put("correctas", correctas);
                         docData.put("fecha", new Timestamp(new Date()));
                         db.collection("partidas").add(docData)
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -206,6 +218,7 @@ public class GameActivity extends AppCompatActivity {
         rb3.setChecked(false);
         rb4.setChecked(false);
     }
+
 
 
 }
