@@ -36,21 +36,23 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameActivity extends AppCompatActivity {
-  //Casteo de elementos.
+    //Casteo de elementos.
 
     ImageView imgPregunta;
     RadioGroup rgRespuestas;
     RadioButton rb1,rb2,rb3,rb4;
     Button btEnviar,btSalir;
-
     FirebaseAuth mAuth;
     FirebaseFirestore db;
+
+    ArrayList <Integer> listRespuestas = new ArrayList();
 
     User user;
     Integer correctas = 0;
@@ -122,15 +124,25 @@ public class GameActivity extends AppCompatActivity {
                 respuestas.setText("Has respondido "+rta+ " preguntas/s");
 
                 if (index ==0 &&  rb1.isChecked()){
-                    correctas++;}
-                if (index == 1 && rb3.isChecked()){
-                    correctas++;}
+                    correctas++;
+                    listRespuestas.add(1);
+                    System.out.println("Entro a la pregunta 1 y va a asignar correcta");}else if( index ==0 ){ listRespuestas.add(0);}
+                if (index == 1 && rb3.isChecked() ){
+                    correctas++;
+                    listRespuestas.add(1);System.out.println("Entro a la pregunta 2 y va a asignar correcta");}else if( index ==1 ){ listRespuestas.add(0);}
                 if (index == 2 && rb4.isChecked()){
-                    correctas++;}
+                    correctas++;
+                    listRespuestas.add(1);System.out.println("Entro a la pregunta 3 y va a asignar correcta");}else if( index ==2 ){ listRespuestas.add(0);}
                 if (index == 3 && rb2.isChecked()){
-                    correctas++;}
-                if (index == 4 && rb4.isChecked()){
-                    correctas++;}
+                    correctas++;
+                    listRespuestas.add(1);System.out.println("Entro a la pregunta 4 y va a asignar correcta");}else if( index ==3 ){ listRespuestas.add(0);}
+                if (index == 4 && rb4.isChecked() ){
+                    correctas++;
+                    listRespuestas.add(1);System.out.println("Entro a la pregunta 5 y va a asignar correcta");}else if( index ==4 ){ listRespuestas.add(0);}
+
+                System.out.println("total valores");
+                System.out.println(listRespuestas.size());
+
                 index++;
                 limpiarRb();
                 switch (index) {
@@ -187,17 +199,18 @@ public class GameActivity extends AppCompatActivity {
                                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
-                                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                                        Log.d(TAG, "Documento Añadido " + documentReference.getId());
                                     }
                                 })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Log.w(TAG, "Error adding document", e);
+                                        Log.w(TAG, "Error añadiendo documento", e);
                                     }
                                 });
 
                         continuar.putExtra("cantidad_respuestas",scorrectas);
+                        continuar.putExtra("respuestas",listRespuestas);
                         startActivity(continuar);
                         finish();
                         break;

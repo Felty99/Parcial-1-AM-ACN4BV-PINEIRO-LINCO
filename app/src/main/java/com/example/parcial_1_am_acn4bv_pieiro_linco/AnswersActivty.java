@@ -17,6 +17,10 @@ import com.example.parcial_1_am_acn4bv_pieiro_linco.model.Pokemon;
 import com.example.parcial_1_am_acn4bv_pieiro_linco.service.PokemonService;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,7 +31,7 @@ public class AnswersActivty extends AppCompatActivity {
     private ImageView ivRespuesta;
     private ListView lvListaRespuestas;
     private ArrayAdapter<String> adapter;
-    private TextView tvAcierto,tvPokedex;
+    private TextView tvAcierto,tvPokedex,tvRespuestas;
 
     PokemonService pokemonService;
     Button btFinal, button;
@@ -42,12 +46,17 @@ public class AnswersActivty extends AppCompatActivity {
         lvListaRespuestas = findViewById(R.id.lvListaRespuestas);
         btFinal = findViewById(R.id.btFinal);
         tvAcierto = findViewById(R.id.tvAcierto);
+        tvRespuestas = findViewById(R.id.tvRespuestas);
         tvPokedex = findViewById(R.id.tvPokedex);
         Retrofit retrofitInstance = new Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/pokemon/").addConverterFactory(GsonConverterFactory.create()).build();
         pokemonService = retrofitInstance.create(PokemonService.class);
 
         Intent continuar = getIntent();
         String respuestas_correctas = continuar.getStringExtra("cantidad_respuestas");
+        ArrayList<Integer> respuestas = continuar.getIntegerArrayListExtra("respuestas");
+        tvRespuestas.setText("");
+
+
         ivRespuesta.setImageResource(R.drawable.inicio);
         Integer rtas = Integer.parseInt(respuestas_correctas);
 
@@ -80,18 +89,23 @@ public class AnswersActivty extends AppCompatActivity {
                 String respuesta = (String) parent.getItemAtPosition(position);
                 Toast.makeText(AnswersActivty.this,respuesta,Toast.LENGTH_SHORT).show();
                 if (respuesta == "Pregunta 1"){
+                    tvRespuestas.setText(respuestas.get(0) ==0?"No acertaste":"Acertaste");
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r0.jpg?alt=media&token=457ca7a5-8ade-497a-9e69-0474541da28e").into(ivRespuesta);
                     getPokemonByDexNum(pokemonService,"pikachu");
                 } else if (respuesta == "Pregunta 2") {
+                    tvRespuestas.setText(respuestas.get(1) ==0?"No acertaste":"Acertaste");
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r1.jpg?alt=media&token=f4899876-6fd4-4317-8d01-a12fd125025b").into(ivRespuesta);
                     getPokemonByDexNum(pokemonService,"ditto");
                 }else if (respuesta == "Pregunta 3") {
+                    tvRespuestas.setText(respuestas.get(2) ==0?"No acertaste":"Acertaste");
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r2.jpg?alt=media&token=dcc1f30b-9397-4afe-a975-521a9b4a6393").into(ivRespuesta);
                     getPokemonByDexNum(pokemonService,"gengar");
                 }else if (respuesta == "Pregunta 4") {
+                    tvRespuestas.setText(respuestas.get(3) ==0?"No acertaste":"Acertaste");
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r3.png?alt=media&token=b68d4ab9-7e4e-4d43-8dd6-329611b71acf").into(ivRespuesta);
                     getPokemonByDexNum(pokemonService,"charizard");
                 }else if (respuesta == "Pregunta 5") {
+                    tvRespuestas.setText(respuestas.get(4) ==0?"No acertaste":"Acertaste");
                     Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/tpfinal-52f32.appspot.com/o/r4.png?alt=media&token=2e76a730-7504-4074-b82c-853a830967ad").into(ivRespuesta);
                     getPokemonByDexNum(pokemonService,"eevee");
                 }
@@ -106,7 +120,7 @@ public class AnswersActivty extends AppCompatActivity {
             public void onResponse(Call<Pokemon> call, Response<Pokemon> response) {
                 Pokemon foundPokemon = response.body();
                 if (foundPokemon != null) {
-                    String responseString = "Nª Pokedex " + foundPokemon.getId() + "\nNombre: " + foundPokemon.getName() + "\nAltura: " + foundPokemon.getHeight()+" ft" + "\nTipo: " + foundPokemon.getTypes().get(0).getType().getName() + "\nPeso: " + foundPokemon.getWeight();
+                    String responseString = "NÂª Pokedex " + foundPokemon.getId() + "\nNombre: " + foundPokemon.getName() + "\nAltura: " + foundPokemon.getHeight()+" ft" + "\nTipo: " + foundPokemon.getTypes().get(0).getType().getName() + "\nPeso: " + foundPokemon.getWeight();
 
                     tvPokedex.setText(responseString);
 

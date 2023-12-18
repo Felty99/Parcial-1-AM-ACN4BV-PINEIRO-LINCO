@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="@string/Preguntas"
-            android:textAlignment="center"/>
+            android:textAlignment="center" />
 
         <ListView
             android:id="@+id/lvListaRespuestas"
@@ -46,14 +46,14 @@
         android:id="@+id/btFinal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#82B1FF"
         android:text="Finalizar"
+        android:textColor="@color/pokemon_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951"
-        android:backgroundTint="#82B1FF"
-        android:textColor="@color/pokemon_red"/>
+        app:layout_constraintVertical_bias="0.951" />
 
     <TextView
         android:id="@+id/tvAcierto"
@@ -76,7 +76,19 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/tvAcierto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.749"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.53" />
+
+    <TextView
+        android:id="@+id/tvRespuestas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="21dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/tvAcierto"
+        app:layout_constraintStart_toStartOf="@+id/tvAcierto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
