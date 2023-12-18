@@ -49,13 +49,28 @@
         android:id="@+id/btEnd"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="84dp"
         android:backgroundTint="#82B1FF"
         android:text="@string/btSalir"
         android:textColor="@color/pokemon_red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btInicio"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="84dp"
+        android:backgroundTint="#82B1FF"
+        android:text="@string/btIinicio"
+        android:textColor="@color/pokemon_red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btEnd"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -99,21 +114,6 @@
             android:textStyle="bold"
             tools:textAlignment="center" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btInicio"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="84dp"
-        android:backgroundTint="#82B1FF"
-        android:text="@string/btIinicio"
-        android:textColor="@color/pokemon_red"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btEnd"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPartidas"

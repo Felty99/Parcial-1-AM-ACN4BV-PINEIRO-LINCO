@@ -66,7 +66,7 @@ public class FinalActivity extends AppCompatActivity {
         btEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                finishAffinity();
             }
         });
 
