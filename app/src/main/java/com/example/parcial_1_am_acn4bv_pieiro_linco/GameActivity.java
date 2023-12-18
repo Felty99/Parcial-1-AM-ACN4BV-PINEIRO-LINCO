@@ -89,6 +89,7 @@ public class GameActivity extends AppCompatActivity {
         LinearLayout Juego = findViewById(R.id.Juego);
         Juego.addView(respuestas);
         respuestas.setTextColor(+R.color.teal_700);
+        respuestas.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         CompoundButton.OnCheckedChangeListener radioButtonsListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
