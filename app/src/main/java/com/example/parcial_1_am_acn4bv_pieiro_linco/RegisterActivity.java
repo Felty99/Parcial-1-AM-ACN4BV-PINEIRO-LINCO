@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseFirestore db;
     public void register (String email, String password) {
 
-        String apodo = etApodo.getText().toString().trim();
+        String apodo = etApodo.getText().toString();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -38,7 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            // Agregar información adicional a Firestore
                             agregarInfoAdicionalFirestore(user.getUid(), apodo);
                             Intent intent = new Intent(getApplicationContext(), WelcomeActivity.class);
                             startActivity(intent);
@@ -62,24 +61,20 @@ public class RegisterActivity extends AppCompatActivity {
         this.register(email,password);
     }
     private void agregarInfoAdicionalFirestore(String userId, String apodo) {
-        // Crear un mapa para almacenar la información adicional
         FirebaseUser currentUser = mAuth.getCurrentUser();
         Map<String, Object> userData = new HashMap<>();
         userData.put("apodo", apodo);
         userData.put("uid",currentUser.getUid());
 
-        // Agregar la información adicional a Firestore
         db.collection("usuarios").document(userId)
                 .set(userData)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            // Información adicional agregada con éxito
                             Toast.makeText(RegisterActivity.this, "Usuario registrado con éxito.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            // Si falla la adición de información adicional, mostrar un mensaje al usuario
                             Toast.makeText(RegisterActivity.this, "Error al agregar información adicional.",
                                     Toast.LENGTH_SHORT).show();
                         }

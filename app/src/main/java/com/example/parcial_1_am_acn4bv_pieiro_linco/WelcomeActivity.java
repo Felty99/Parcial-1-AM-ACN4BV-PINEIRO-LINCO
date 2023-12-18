@@ -102,7 +102,6 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             btLogout.setVisibility(View.VISIBLE);
@@ -120,7 +119,6 @@ public class WelcomeActivity extends AppCompatActivity {
                                     user = documento.toObject(User.class);
                                     String apodo = user.getApodo();
                                     tvNombre.setText("¡Bienvenido "+apodo+"!");
-                                    Log.i("FirebaseFirestore", "id: "+id+"data: "+data.toString());
                                 }
                             }
                         }
