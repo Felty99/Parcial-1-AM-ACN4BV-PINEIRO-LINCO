@@ -58,7 +58,7 @@ public class FinalActivity extends AppCompatActivity {
         btSalir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                finishAffinity();
             }
 
         });

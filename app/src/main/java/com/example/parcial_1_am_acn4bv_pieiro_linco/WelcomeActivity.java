@@ -85,12 +85,8 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nombre = user.getApodo();
-
                 Intent continuar = new Intent(WelcomeActivity.this, RulesActivity.class);
-
-
                 continuar.putExtra("nombre",nombre);
-
                 startActivity(continuar);
                 finish();
             }
