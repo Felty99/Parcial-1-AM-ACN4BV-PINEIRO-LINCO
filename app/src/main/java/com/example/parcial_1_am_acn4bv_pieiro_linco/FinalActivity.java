@@ -32,8 +32,6 @@ public class FinalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
-
-
         btInicio=findViewById(R.id.btInicio);
         btSalir=findViewById(R.id.btSalir);
         btEnd = findViewById(R.id.btEnd);
