@@ -39,12 +39,13 @@
             android:textSize="20dp" />
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/tvBienvenido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/pokemon_red"
-        android:layout_width="346dp"
-        android:layout_height="55dp"
-        android:textSize="40sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
